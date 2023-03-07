@@ -29,4 +29,3 @@ class Database:
             print("Database reseted successfully!")
         except Exception as e:
             print(e)
-
