@@ -17,15 +17,19 @@ def get_4_letters_or_less(collection):
       if all(len(word) <= 4 for word in name["name"].values()):
         four_letters_or_less.append(name["name"].values())
   return four_letters_or_less
-
 writeAJson(get_4_letters_or_less(db.collection), "pokemon_4_words_or_less")
-
-pokemon1 = db.collection.find({"type": "Grass", "base.Attack": { "$lte": 50 }})
-writeAJson(pokemon1, "pokemon_grass")
-def buscaNomeEnglish():
-    return
-def buscaAttack():
-    return
-def buscaDef():
-    return
+pokemonglass = db.collection.find({"type": "Grass", "base.Attack": { "$lte": 50 }})
+writeAJson(pokemonglass, "pokemon_grass")
+def getPokemonName(id: int):
+    return db.collection.find({"id": id},{"name"})
+pokemonName = getPokemonName(1)
+writeAJson(pokemonName,"pokemonName")
+def getPokemonBase(id: int):
+    return db.collection.find({"id": id},{"base"})
+pokemonBase = getPokemonBase(1)
+writeAJson(pokemonBase,"basePokemon")
+def getPokemonDef(id:int):
+    return db.collection.find({"id": id},{"base.Defense"})
+pokemonDefense = getPokemonDef(1)
+writeAJson(pokemonDefense,"defensePokemon")
 
