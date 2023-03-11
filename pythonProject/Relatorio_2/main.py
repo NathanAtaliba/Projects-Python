@@ -1,16 +1,36 @@
-# This is a sample Python script.
+from database import Database
+from save_json import writeAJson
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+db = Database(database="dex", collection="pokemons")
+db.resetDatabase()
 
+def getPokemonByDex(number: int):
+    return db.collection.find({"id": number})
+bulbasaur = getPokemonByDex(1)
+writeAJson(bulbasaur, "bulbasaur")
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+def get_4_letters_or_less(collection):
+  names = collection.find({}, {"name": 1})
+  four_letters_or_less = []
+  for name in names:
+    if len(name["name"].keys()) <= 4:
+      if all(len(word) <= 4 for word in name["name"].values()):
+        four_letters_or_less.append(name["name"].values())
+  return four_letters_or_less
+writeAJson(get_4_letters_or_less(db.collection), "pokemon_4_words_or_less")
 
+def getNameById(number: int):
+    return db.collection.find({"id": number},{"name"})
+namePokemon = getNameById(1)
+writeAJson(namePokemon, "namePokemon")
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+def getAttackById(number: int):
+    return db.collection.find({"id": number},{"base.Attack"})
+attackPokemon = getAttackById(1)
+writeAJson(attackPokemon, "attackPokemon")
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+def getDefById(number: int):
+    return db.collection.find({"id": number},{"base.Defense"})
+defensePokemon = getDefById(1)
+writeAJson(defensePokemon, "defensePokemon")
+
