@@ -1,0 +1,13 @@
+[
+    {
+        "_id": {
+            "$oid": "640d30199c2c6da5649d0d44"
+        },
+        "name": {
+            "english": "Bulbasaur",
+            "japanese": "\u30d5\u30b7\u30ae\u30c0\u30cd",
+            "chinese": "\u5999\u86d9\u79cd\u5b50",
+            "french": "Bulbizarre"
+        }
+    }
+]
