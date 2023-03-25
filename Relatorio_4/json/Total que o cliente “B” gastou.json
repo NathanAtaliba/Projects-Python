@@ -1,32 +1,8 @@
 [
     {
         "_id": {
-            "cliente": "A",
-            "total": 20
-        }
-    },
-    {
-        "_id": {
-            "cliente": "B",
-            "total": 60
-        }
-    },
-    {
-        "_id": {
-            "cliente": "A",
-            "total": 80
-        }
-    },
-    {
-        "_id": {
-            "cliente": "B",
-            "total": 30
-        }
-    },
-    {
-        "_id": {
-            "cliente": "C",
-            "total": 50
-        }
+            "cliente": "B"
+        },
+        "total": 90
     }
 ]

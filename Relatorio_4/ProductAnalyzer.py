@@ -5,11 +5,12 @@ db.resetDatabase()
 class ProductAnalyzer():
     def clienteB(self): #Retorne o total que o cliente “B” gastou.
         json1 = db.collection.aggregate([
-            {"$unwind": "$produtos"},
-            {"$group": {"_id": {"cliente": "$cliente_id",
-                        "total": {"$sum": {"$multiply": ["$produtos.quantidade", "$produtos.preco"]}}}}},
-
+        {"$unwind": "$produtos"},
+        {"$group": {"_id": {"cliente": "$cliente_id"},
+            "total": {"$sum": {"$multiply": ["$produtos.quantidade", "$produtos.preco"]}}}},
+        {"$match": {"_id.cliente": "B"}},
         ])
+
         return json1
     def produtoMenosV(self): #Retorne o produto menos vendido em todas as compras.
         json2 = db.collection.aggregate([
