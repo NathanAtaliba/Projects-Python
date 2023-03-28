@@ -6,9 +6,10 @@ class ProductAnalyzer():
     def clienteB(self): #Retorne o total que o cliente “B” gastou.
         json1 = db.collection.aggregate([
         {"$unwind": "$produtos"},
+        {"$match": {"cliente_id": "B"}},
         {"$group": {"_id": {"cliente": "$cliente_id"},
-            "total": {"$sum": {"$multiply": ["$produtos.quantidade", "$produtos.preco"]}}}},
-        {"$match": {"_id.cliente": "B"}},
+        "total": {"$sum": {"$multiply": ["$produtos.quantidade", "$produtos.preco"]}}}}
+
         ])
 
         return json1
