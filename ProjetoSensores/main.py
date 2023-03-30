@@ -4,19 +4,19 @@ import random
 from pymongo import MongoClient
 
 # configurações do MongoDB
-client = MongoClient('localhost', 27017)
-db = client.bancoiot
-sensores = db.sensores
+client = MongoClient('localhost', 27017) # Configura a porta do servidor
+db = client.bancoiot # inicializa db como cliente.bancoiot
+sensores = db.sensores # sensores sera a colections sensores do bancoiot
 
 # definição das classes de sensores
-class Sensor(threading.Thread):
-    def __init__(self, nome):
+class Sensor(threading.Thread): # Criando a classe sensor
+    def __init__(self, nome):  # construtor para nome do sensor
         threading.Thread.__init__(self)
         self.nome = nome
         self.valor = 0
         self.alarmado = False
 
-    def run(self):
+    def run(self):  # rodando a thread e gerando um numero aleatorio
         while True:
             self.valor = round(random.uniform(30, 40), 2)
             print(f"{self.nome}: {self.valor} C°")
@@ -26,7 +26,7 @@ class Sensor(threading.Thread):
                 print(f"Atenção! Temperatura muito alta! Verificar {self.nome}!")
             time.sleep(5)
 
-    def atualizar_db(self):
+    def atualizar_db(self):  # atualizando no documento o valor do sensor e se esta alarmado
         query = {"nomeSensor": self.nome}
         update = {"$set": {"valorSensor": self.valor}}
         sensores.update_one(query, update, upsert=True)
