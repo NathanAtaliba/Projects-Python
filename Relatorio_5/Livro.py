@@ -5,7 +5,7 @@ class livro:
     def __init__(self, database):
         self.db = database
 
-    def create_livro(self, titulo: str, ano: int, autor: str, preco: int):
+    def create_livro(self, titulo: str, autor: str, ano: str, preco: int):
         try:
             res = self.db.collection.insert_one({"titulo": titulo, "autor": autor, "ano": ano, "preco": preco})
             print(f"Book created with id: {res.inserted_id}")

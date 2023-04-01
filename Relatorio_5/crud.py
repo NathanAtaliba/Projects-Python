@@ -49,7 +49,7 @@ class livroCLI(SimpleCLI):
         autor = input("Enter the  new author: ")
         ano = int(input("Enter the new year: "))
         preco = int(input("Enter the new price: "))
-        self.livro_model.update_livro(id, titulo, autor,ano, preco)
+        self.livro_model.update_livro(id, titulo, autor, ano, preco)
 
     def delete_livro(self):
         id = input("Enter the id: ")
