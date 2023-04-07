@@ -39,13 +39,13 @@ temp1 = Sensor("Temp1")
 temp2 = Sensor("Temp2")
 temp3 = Sensor("Temp3")
 
-docs = [
+documento = [
     {"nomeSensor": "Temp1", "valorSensor": 0, "unidadeMedida": "C°", "sensorAlarmado": False},
     {"nomeSensor": "Temp2", "valorSensor": 0, "unidadeMedida": "C°", "sensorAlarmado": False},
     {"nomeSensor": "Temp3", "valorSensor": 0, "unidadeMedida": "C°", "sensorAlarmado": False},
 ]
 
-for doc in docs:
+for doc in documento:
     sensores.update_one({"nomeSensor": doc["nomeSensor"]}, {"$setOnInsert": doc}, upsert=True)
 
 # inicialização das threads
