@@ -16,7 +16,9 @@ class Sensor(threading.Thread): # Criando a classe sensor
         self.valor = 0
         self.alarmado = False
     def run(self):  # rodando a thread e gerando um numero aleatorio
+
         while True:
+
             self.valor = round(random.uniform(30, 40), 2) #gerando valor de 30 a 40 para temperatura
             print(f"{self.nome}: {self.valor} C°")
             self.atualizar_db()
