@@ -1,0 +1,15 @@
+{
+  'Elefante1':  {
+    'nome': 'Clorovaldo',
+    'cor': ["red","white"],
+    'som': 'PAAAAH',
+    'especie': 'Africano'
+
+},
+  'Elefante2':  {
+    'nome': 'Cacildo',
+    'cor': ["yellow","black"],
+    'som': 'paaah',
+    'especie': 'Brasileiro'
+}
+}
