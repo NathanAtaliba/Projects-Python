@@ -29,6 +29,3 @@ MATCH (p1:Pessoa {nome: 'Ian'}), (p2:Pessoa {nome: 'Nathan'})
 CREATE (p1)-[:IRMAO_DE]->(p2);
 MATCH (p1:Pessoa {nome: 'Ian'}), (p2:Pessoa {nome: 'Renan'})
 CREATE (p1)-[:IRMAO_DE]->(p2);
-
-MATCH (n)
-DETACH DELETE n
