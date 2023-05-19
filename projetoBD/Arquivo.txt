@@ -1,0 +1,34 @@
+CREATE(:Pessoa:Engenheiro{nome: 'Nathan', idade: 22, sexo: 'M'});
+CREATE(:Pessoa:Reporter{nome:'Renan', idade: 17, sexo: 'M'});
+CREATE(:Pessoa:Pedreiro{nome: 'Ian', idade: 18, sexo: 'M'});
+CREATE(:Pessoa:Comerciante{nome:'Joao', idade: 59, sexo: 'M'});
+CREATE(:Pessoa:Contadora{nome:'Fernanda', idade: 55, sexo: 'F'});
+CREATE(:Pessoa:Contadora{nome:'Luzia', idade: 70, sexo: 'F'});
+CREATE(:Pessoa:Medica{nome:'Eloiza', idade: 32, sexo: 'F'});
+CREATE(:Pet:Dog{nome:'Toddy', idade: 7, cor:'Marron'});
+CREATE(:Pet:Cat{nome:'Billy', idade: 8, cor:'Amarelo'});
+CREATE(:Pet:Bird{nome:'Talis', idade: 3,cor:'Verde'});
+
+MATCH (p1:Pessoa {nome: 'Nathan'}), (p2:Pessoa {nome: 'Fernanda'})
+CREATE (p2)-[:PAI_DE]->(p1);
+MATCH (p1:Pessoa {nome: 'Ian'}), (p2:Pessoa {nome: 'Fernanda'})
+CREATE (p2)-[:PAI_DE]->(p1);
+MATCH (p1:Pessoa {nome: 'Renan'}), (p2:Pessoa {nome: 'Fernanda'})
+CREATE (p2)-[:PAI_DE]->(p1);
+MATCH (p1:Pessoa {nome: 'Fernanda'}), (p2:Pessoa {nome: 'Luzia'})
+CREATE (p2)-[:PAI_DE]->(p1);
+MATCH (p1:Pessoa {nome: 'Nathan'}), (pet:Pet {nome: 'Toddy'})
+CREATE (p1)-[:DONO_DE]->(pet);
+MATCH (p1:Pessoa {nome: 'Nathan'}), (pet:Pet {nome: 'Billy'})
+CREATE (p1)-[:DONO_DE]->(pet);
+MATCH (p1:Pessoa {nome: 'Nathan'}), (pet:Pet {nome: 'Talis'})
+CREATE (p1)-[:DONO_DE]->(pet);
+MATCH (p1:Pessoa {nome: 'Joao'}), (p2:Pessoa {nome: 'Fernanda'})
+CREATE (p1)-[:ESPOSO_DE{ano: 1989}]->(p2);
+MATCH (p1:Pessoa {nome: 'Ian'}), (p2:Pessoa {nome: 'Nathan'})
+CREATE (p1)-[:IRMAO_DE]->(p2);
+MATCH (p1:Pessoa {nome: 'Ian'}), (p2:Pessoa {nome: 'Renan'})
+CREATE (p1)-[:IRMAO_DE]->(p2);
+
+MATCH (n)
+DETACH DELETE n
