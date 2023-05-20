@@ -12,6 +12,8 @@ try:
 except:
     print('Não conectado!')
 
+'''
+#ENTRADA DE DADOS POR USUARIO
 while True:
     print('Oque voce deseja fazer:')
     print('1- Criar Teacher')
@@ -40,5 +42,11 @@ while True:
         break
     else:
         print('Opção não existe! Tente novamente!')
+'''
+
+banco.criar_Teacher('Chris Lima',1956,'189.052.396-66')
+print(banco.read_Teacher('Chris Lima'))
+banco.update_Teacher('Chris Lima', "162.052.777-77")
+
 # Fechando a conexão
 db.close()
