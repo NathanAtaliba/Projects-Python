@@ -17,7 +17,7 @@ class BancoDeDados:
         return [(result["p1.nome"], result["p2.nome"]) for result in results]
 #"Sicrana de tal namora com quem desde quando?"
     def get_Relacionamento(self, nome):
-        query = "MATCH (p1:Pessoa{nome: $nome})-[:ESPOSO_DE]->(p2:Pessoa) RETURN p2.nome"
+        query = "MATCH (p1:Pessoa{nome: $nome})<-[:ESPOSO_DE]->(p2:Pessoa) RETURN p2.nome"
         parameters = {"nome": nome}
         results = self.db.execute_query(query, parameters)
         return [(result["p2.nome"]) for result in results]

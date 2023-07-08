@@ -1,5 +1,4 @@
 from database import Database
-from writeAJson import writeAJson
 from Carta import carta
 from cli import CartaCLI
 
